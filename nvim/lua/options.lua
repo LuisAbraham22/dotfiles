@@ -14,6 +14,7 @@ vim.o.linebreak = true
 vim.o.showbreak = "↳ "
 vim.o.tabstop = 4 -- num of space characters per tab
 vim.o.shiftwidth = 4 -- spaces per indentation level
+vim.o.expandtab = true
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
@@ -125,3 +126,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldlevelstart = 99
+
+-- Create an autocmd for JavaScript/TypeScript/React
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
+  callback = function()
+    vim.opt_local.tabstop = 2
+    vim.opt_local.shiftwidth = 2
+  end,
+})
+
+vim.opt.wildignore:append { "*/node_modules/*" }

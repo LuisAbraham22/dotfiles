@@ -37,6 +37,9 @@ return {
     scroll = { enabled = true },
     statuscolumn = { enabled = true },
     words = { enabled = true },
+    terminal = {
+      enabled = false,
+    },
   },
   keys = {
     {
@@ -94,13 +97,6 @@ return {
         Snacks.notifier.hide()
       end,
       desc = "Dismiss All Notifications",
-    },
-    {
-      "<c-/>",
-      function()
-        Snacks.terminal()
-      end,
-      desc = "Toggle Terminal",
     },
     {
       "<c-_>",

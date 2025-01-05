@@ -37,6 +37,15 @@ return { -- Autoformat
       --
       -- You can use 'stop_after_first' to run the first available formatter from the list
       javascript = { "prettierd", "prettier", stop_after_first = true },
+      go = { "goimports", "gofmt" },
+      -- You can also customize some of the format options for the filetype
+      rust = { "rustfmt", lsp_format = "fallback" },
+      html = { { "prettierd" } },
+      javascriptreact = { { "prettierd" } },
+      markdown = { { "prettierd" } },
+      typescript = { { "prettierd" } },
+      typescriptreact = { { "prettierd" } },
+      ["*"] = { "trim_whitespace" },
     },
     -- format_on_save = {
     --     -- These options will be passed to conform.format()
@@ -45,4 +54,3 @@ return { -- Autoformat
     --   },
   },
 }
-

@@ -14,10 +14,10 @@ M.ui = {
 
 M.base46 = {
   theme = "gruvchad",
-  -- hl_override = {
-  -- 	Comment = { italic = true },
-  -- 	["@comment"] = { italic = true },
-  -- },
+
+  hl_override = {
+    Normal = { bg = "#1b1b1b" },
+  },
 }
 
 M.colorify = {
