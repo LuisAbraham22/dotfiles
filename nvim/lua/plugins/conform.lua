@@ -36,15 +36,15 @@ return { -- Autoformat
       python = { "isort", "black" },
       --
       -- You can use 'stop_after_first' to run the first available formatter from the list
-      javascript = { "prettierd", "prettier", stop_after_first = true },
+      javascript = { "biome", "prettier", stop_after_first = true },
       go = { "goimports", "gofmt" },
       -- You can also customize some of the format options for the filetype
       rust = { "rustfmt", lsp_format = "fallback" },
-      html = { { "prettierd" } },
-      javascriptreact = { { "prettierd" } },
-      markdown = { { "prettierd" } },
-      typescript = { { "prettierd" } },
-      typescriptreact = { { "prettierd" } },
+      html = { { "biome" } },
+      javascriptreact = { { "biome" } },
+      markdown = { { "biome" } },
+      typescript = { { "biome" } },
+      typescriptreact = { { "biome" } },
       ["*"] = { "trim_whitespace" },
     },
     -- format_on_save = {
