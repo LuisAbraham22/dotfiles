@@ -123,14 +123,25 @@ vim.list_extend(
   vim.split(vim.fn.glob(vim.env.HOME .. "/.local/share/nvim/mason/share/java-test/*.jar", 1), "\n")
 )
 
+local ws_folders_lsp = {}
 lspconfig.jdtls.setup {
   filetypes = { "java" },
   on_init = on_init,
   capabilities = capabilities,
   on_attach = function(_, bufnr)
     enable_debugger(bufnr)
+    -- Create buffer-local autocommands for inlay hints
+    vim.api.nvim_create_autocmd({ "InsertEnter", "InsertLeave" }, {
+      buffer = bufnr,
+      callback = function(args)
+        if args.event == "InsertEnter" then
+          vim.lsp.inlay_hint.enable(true)
+        else -- InsertLeave
+          vim.lsp.inlay_hint.enable(false)
+        end
+      end,
+    })
     local bemol_dir = vim.fs.find({ ".bemol" }, { upward = true, type = "directory" })[1]
-    local ws_folders_lsp = {}
     if bemol_dir then
       local file = io.open(bemol_dir .. "/ws_root_folders", "r")
       if file then
@@ -171,6 +182,36 @@ lspconfig.jdtls.setup {
         organizeImports = {
           starThreshold = 9999,
           staticStarThreshold = 9999,
+        },
+      },
+      inlayHints = {
+        parameterNames = {
+          enabled = "all", -- literals, all, none
+        },
+        typeParameters = {
+          enabled = true,
+        },
+        parameterTypes = {
+          enabled = true,
+        },
+        -- Enable hints for stream collectors/pipelines
+        expressionTypes = {
+          enabled = true,
+        },
+        variableTypes = {
+          enabled = true,
+        },
+        chainedCalls = {
+          enabled = true,
+        },
+        inferredTypes = {
+          enabled = true,
+        },
+        localVariableTypes = {
+          enabled = true,
+        },
+        recordTypes = {
+          enabled = true,
         },
       },
     },
@@ -261,16 +302,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
           vim.api.nvim_clear_autocmds { group = "kickstart-lsp-highlight", buffer = event2.buf }
         end,
       })
-    end
-
-    -- The following code creates a keymap to toggle inlay hints in your
-    -- code, if the language server you are using supports them
-    --
-    -- This may be unwanted, since they displace some of your code
-    if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-      map("<leader>th", function()
-        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
-      end, "[T]oggle Inlay [H]ints")
     end
   end,
 })

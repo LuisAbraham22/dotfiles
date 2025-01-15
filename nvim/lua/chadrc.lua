@@ -13,11 +13,11 @@ M.ui = {
 }
 
 M.base46 = {
-  theme = "rosepine",
+  theme = "gruvchad",
 
-  hl_override = {
-    Normal = { bg = "#1b1b1b" },
-  },
+  -- hl_override = {
+  --   Normal = { bg = "#1b1b1b" },
+  -- },
 }
 
 M.colorify = {

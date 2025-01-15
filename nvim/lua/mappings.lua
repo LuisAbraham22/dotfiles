@@ -23,3 +23,12 @@ vim.keymap.set("n", "<S-k>", "5k", { desc = "Quick move up" })
 vim.keymap.set({ "n", "o", "x" }, "w", "<cmd>lua require('spider').motion('w')<CR>", { desc = "Spider-w" })
 vim.keymap.set({ "n", "o", "x" }, "e", "<cmd>lua require('spider').motion('e')<CR>", { desc = "Spider-e" })
 vim.keymap.set({ "n", "o", "x" }, "b", "<cmd>lua require('spider').motion('b')<CR>", { desc = "Spider-b" })
+
+vim.api.nvim_create_user_command("ReplaceWord", function()
+  local word = vim.fn.expand "<cword>"
+  vim.fn.feedkeys(":%s/\\<" .. word .. "\\>/")
+end, {})
+
+vim.keymap.set("n", "<leader>sr", ":ReplaceWord<CR>", { noremap = true, silent = true })
+vim.keymap.set("c", "<C-r><C-w>", "<C-r><C-w>", { noremap = true })
+vim.keymap.set("c", "<C-r>w", "<C-r><C-w>", { noremap = true })
