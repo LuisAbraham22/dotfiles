@@ -13,7 +13,7 @@ M.ui = {
 }
 
 M.base46 = {
-  theme = "gruvchad",
+  theme = "rosepine",
 
   -- hl_override = {
   --   Normal = { bg = "#1b1b1b" },

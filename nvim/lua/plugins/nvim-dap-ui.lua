@@ -43,38 +43,6 @@ return {
       current_frame = "",
       expanded = "",
     },
-    layouts = {
-      {
-        elements = {
-          {
-            id = "scopes",
-            size = 0.50,
-          },
-          {
-            id = "stacks",
-            size = 0.30,
-          },
-          {
-            id = "watches",
-            size = 0.10,
-          },
-          {
-            id = "breakpoints",
-            size = 0.10,
-          },
-        },
-        size = 40,
-        position = "left", -- Can be "left" or "right"
-      },
-      {
-        elements = {
-          "repl",
-          "console",
-        },
-        size = 10,
-        position = "bottom", -- Can be "bottom" or "top"
-      },
-    },
     mappings = {
       edit = "e",
       expand = { "<CR>", "<2-LeftMouse>" },

@@ -25,7 +25,6 @@ require("lazy").setup({
   { import = "plugins" },
   { import = "plugins/typescript" },
   { import = "plugins/go" },
-  { import = "plugins/rust" },
 }, lazy_config)
 
 -- load theme

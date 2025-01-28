@@ -52,16 +52,15 @@ return {
         java = {
           "google-java-format",
         },
+        swift = {
+          "swift_format"
+        }
       },
       formatters = {
         ["google-java-format"] = {
           prepend_args = { "--aosp" },
         },
-      }, -- format_on_save = {
-      --     -- These options will be passed to conform.format()
-      --     timeout_ms = 500,
-      --     lsp_fallback = true,
-      --   },
+      }
     },
   },
 }

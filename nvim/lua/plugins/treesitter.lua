@@ -25,6 +25,7 @@ return { -- Highlight, edit, and navigate code
       "smithy",
       "rust",
       "tsx",
+      "swift",
     },
     -- Autoinstall languages that are not installed
     auto_install = true,
@@ -37,6 +38,18 @@ return { -- Highlight, edit, and navigate code
     },
     indent = { enable = false, disable = { "ruby" } },
   },
+  config = function(_, opts)
+    -- Apply the Treesitter configuration
+    require("nvim-treesitter.configs").setup(opts)
+
+    -- Set filetype for *.swiftinterface
+    vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, { -- Corrected event format
+      pattern = "*.swiftinterface",
+      callback = function()
+        vim.bo.filetype = "swift"
+      end,
+    })
+  end,
   -- There are additional nvim-treesitter modules that you can use to interact
   -- with nvim-treesitter. You should go explore a few and see what interests you:
   --
