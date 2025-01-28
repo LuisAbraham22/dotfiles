@@ -7,12 +7,14 @@ return {
       "antoinemadec/FixCursorHold.nvim",
       "nvim-treesitter/nvim-treesitter",
       "mmllr/neotest-swift-testing",
+      "rcasia/neotest-java",
     },
     config = function()
       local neotest = require "neotest"
       neotest.setup {
         adapters = {
           require "neotest-swift-testing",
+          require "neotest-java",
         },
         output = {
           open_on_run = true,
@@ -38,5 +40,8 @@ return {
   },
   {
     "mmllr/neotest-swift-testing",
+  },
+  {
+    "rcasia/neotest-java",
   },
 }

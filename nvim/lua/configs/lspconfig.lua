@@ -20,6 +20,7 @@ local servers = {
   "dockerls",
   "eslint",
   "sourcekit",
+  "jdtls",
 }
 
 -- Function to setup each LSP server

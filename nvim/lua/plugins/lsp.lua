@@ -20,7 +20,7 @@ return {
           "eslint",
           "lua_ls",
         },
-        automatic_installation = true,
+        automatic_installation = false,
       }
 
       require("mason-tool-installer").setup {

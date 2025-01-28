@@ -50,6 +50,10 @@ return {
   end,
   cmd = {
     "jdtls",
+    "-configuration",
+    "/Users/luiabrah/.cache/jdtls/config",
+    "-data",
+    "/Users/luiabrah/.cache/jdtls/workspace",
     "--jvm-arg=-javaagent:" .. require("mason-registry").get_package("jdtls"):get_install_path() .. "/lombok.jar",
   },
   settings = {
@@ -86,9 +90,9 @@ return {
         },
       },
     },
-    init_options = {
-      workspaceFolders = ws_folders_lsp,
-      bundles = bundles,
-    },
+  },
+  init_options = {
+    workspaceFolders = ws_folders_lsp,
+    bundles = bundles,
   },
 }
