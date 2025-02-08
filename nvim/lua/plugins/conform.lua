@@ -40,27 +40,27 @@ return {
         python = { "isort", "black" },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
-        javascript = { "biome", "prettier", stop_after_first = true },
+        javascript = { "prettierd", stop_after_first = true },
         go = { "goimports", "gofmt" },
         -- You can also customize some of the format options for the filetype
         rust = { "rustfmt", lsp_format = "fallback" },
-        html = { { "biome" } },
-        javascriptreact = { "biome" },
-        markdown = { "biome" },
-        typescript = { "biome" },
-        typescriptreact = { "biome" },
+        html = { { "prettierd" } },
+        javascriptreact = { "prettierd" },
+        markdown = { "prettierd" },
+        typescript = { "prettierd" },
+        typescriptreact = { "prettierd" },
         java = {
           "google-java-format",
         },
         swift = {
-          "swift_format"
-        }
+          "swift_format",
+        },
       },
       formatters = {
         ["google-java-format"] = {
           prepend_args = { "--aosp" },
         },
-      }
+      },
     },
   },
 }

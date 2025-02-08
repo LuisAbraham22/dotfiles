@@ -21,6 +21,7 @@ local servers = {
   "eslint",
   "sourcekit",
   "jdtls",
+  "tailwindcss",
 }
 
 -- Function to setup each LSP server
