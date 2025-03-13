@@ -1,0 +1,77 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace || Editor",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "space f g": "pane::DeploySearch"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "space f f": "file_finder::Toggle",
+      "space space": "file_finder::Toggle",
+      "space f b": "tab_switcher::Toggle"
+    }
+  },
+  {
+    "context": "VimControl && !menu && vim_mode != operator",
+    "bindings": {
+      "w": "vim::NextSubwordStart",
+      "b": "vim::PreviousSubwordStart",
+      "e": "vim::NextSubwordEnd",
+      "g e": "vim::PreviousSubwordEnd",
+      "shift-tab": "pane::ActivatePreviousItem",
+      "tab": "pane::ActivateNextItem"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "cmd-t": "workspace::NewTerminal"
+    }
+  },
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      "space t": "workspace::NewTerminal",
+      "space x": "pane::CloseActiveItem",
+      "space v": "pane::SplitRight"
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "a": "project_panel::NewFile",
+      "d": ["project_panel::Delete", { "skip_prompt": false }],
+      "r": "project_panel::Rename"
+    }
+  },
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      "ctrl-w z": "workspace::ToggleZoom",
+      "ctrl-w t": "terminal_panel::ToggleFocus",
+      "g ]": "editor::GoToDiagnostic",
+      "g [": "editor::GoToPreviousDiagnostic",
+      "g r": "editor::FindAllReferences",
+      "g h": "editor::Hover",
+      "space c a": "editor::ToggleCodeActions",
+      "space c r": "editor::Rename",
+      "space c f": "editor::Format",
+      "space c e": "diagnostics::Deploy",
+      "g c c": "editor::ToggleComments",
+      "space p": "outline::Toggle"
+    }
+  }
+]
