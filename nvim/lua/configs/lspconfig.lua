@@ -24,6 +24,37 @@ local servers = {
   "tailwindcss",
 }
 
+local on_attach_override = function(client, bufnr)
+  local map = function(keys, func, desc, mode)
+    mode = mode or "n"
+    vim.keymap.set(mode, keys, func, { buffer = bufnr, desc = "LSP: " .. desc })
+  end
+  on_attach(client, bufnr)
+
+  map("gd", function()
+    Snacks.picker.lsp_definitions()
+  end, "Goto Definition")
+
+  map("gr", function()
+    Snacks.picker.lsp_references {
+      auto_close = true,
+      focus = "list",
+    }
+  end, "References")
+
+  map("gI", function()
+    Snacks.picker.lsp_implementations()
+  end, "Goto Implementation")
+
+  map("gy", function()
+    Snacks.picker.lsp_type_definitions()
+  end, "Goto T[y]pe Definition")
+
+  map("<leader>ss", function()
+    Snacks.picker.lsp_symbols()
+  end, "LSP Symbols")
+end
+
 -- Function to setup each LSP server
 local function setup_server(server)
   -- Attempt to load a server-specific configuration file
@@ -32,14 +63,14 @@ local function setup_server(server)
   if status and server_config then
     -- Merge common configurations with server-specific settings
     lspconfig[server].setup(vim.tbl_deep_extend("force", {
-      on_attach = on_attach,
+      on_attach = on_attach_override,
       on_init = on_init,
       capabilities = capabilities,
     }, server_config))
   else
     -- Setup server with default configurations if no specific config is found
     lspconfig[server].setup {
-      on_attach = on_attach,
+      on_attach = on_attach_override,
       on_init = on_init,
       capabilities = capabilities,
     }
@@ -69,7 +100,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     --  This is where a variable was first declared, or where a function is defined, etc.
     --  To jump back, press <C-t>.
     -- map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-
     map("gh", vim.lsp.buf.hover, "[G]oto [H]over")
 
     -- Find references for the word under your cursor.

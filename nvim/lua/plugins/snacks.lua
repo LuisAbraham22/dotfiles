@@ -202,7 +202,7 @@ return {
       desc = "Grep Open Buffers",
     },
     {
-      "<leader>sg",
+      "<leader>fg",
       function()
         Snacks.picker.grep()
       end,
@@ -338,9 +338,12 @@ return {
       desc = "Goto Definition",
     },
     {
-      "gr",
+      "gR",
       function()
-        Snacks.picker.lsp_references()
+        Snacks.picker.lsp_references {
+          auto_close = true,
+          focus = "list",
+        }
       end,
       nowait = true,
       desc = "References",
