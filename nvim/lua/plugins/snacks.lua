@@ -163,14 +163,6 @@ return {
       end,
       desc = "Recent",
     },
-    {
-      "<leader>fg",
-      function()
-        Snacks.picker.git_files()
-      end,
-      desc = "Find Git Files",
-    },
-
     -- git
     {
       "<leader>gc",

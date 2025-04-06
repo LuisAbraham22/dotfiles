@@ -10,6 +10,17 @@ M.ui = {
     theme = "default",
     separator_style = "arrow",
   },
+  lsp = {
+    signature = {
+      focusable = false,
+      border = "rounded",
+    },
+  },
+  cmp = {
+    format_colors = {
+      tailwind = true,
+    },
+  },
 }
 
 M.base46 = {

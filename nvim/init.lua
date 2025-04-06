@@ -25,6 +25,8 @@ require("lazy").setup({
   { import = "plugins" },
   { import = "plugins/typescript" },
   { import = "plugins/go" },
+  { import = "plugins/rust" },
+  { import = "plugins/python" },
 }, lazy_config)
 
 -- load theme
@@ -33,6 +35,7 @@ dofile(vim.g.base46_cache .. "statusline")
 
 require "options"
 require "nvchad.autocmds"
+require "mappings"
 
 vim.schedule(function()
   require "mappings"
