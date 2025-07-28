@@ -195,11 +195,5 @@ return { -- Autocompletion
         end,
       },
     }
-
-    cmp.setup {
-      sources = cmp.config.sources {
-        { name = "render-markdown" },
-      },
-    }
   end,
 }
