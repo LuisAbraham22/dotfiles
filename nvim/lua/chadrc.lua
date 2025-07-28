@@ -24,11 +24,7 @@ M.ui = {
 }
 
 M.base46 = {
-  theme = "gruvchad",
-
-  hl_override = {
-    Normal = { bg = "#181818" },
-  },
+  theme = "kanagawa-dragon",
 }
 
 M.colorify = {

@@ -27,6 +27,7 @@ require("lazy").setup({
   { import = "plugins/go" },
   { import = "plugins/rust" },
   { import = "plugins/python" },
+  { import = "plugins/markdown" },
 }, lazy_config)
 
 -- load theme

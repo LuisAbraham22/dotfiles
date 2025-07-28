@@ -60,6 +60,10 @@ return {
         ["google-java-format"] = {
           prepend_args = { "--aosp" },
         },
+        swift_format = {
+          stdin = false,
+          args = { "$FILENAME", "--in-place" },
+        },
       },
     },
   },
