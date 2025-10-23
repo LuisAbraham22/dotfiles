@@ -4,11 +4,12 @@
 
 ---@type ChadrcConfig
 local M = {}
+
 M.ui = {
   telescope = { style = "bordered" }, -- borderless / bordered
   statusline = {
-    theme = "default",
-    separator_style = "arrow",
+    theme = "minimal",
+    separator_style = "round",
   },
   lsp = {
     signature = {
@@ -25,7 +26,45 @@ M.ui = {
 
 M.base46 = {
   theme = "kanagawa-dragon",
+
+  -- hl_override = {
+  -- 	Comment = { italic = true },
+  -- 	["@comment"] = { italic = true },
+  -- },
 }
+
+M.nvdash = {
+  load_on_startup = true,
+  header = {
+    "          _____            _____          ",
+    "         /\\    \\          /\\    \\         ",
+    "        /::\\____\\        /::\\    \\        ",
+    "       /:::/    /       /::::\\    \\       ",
+    "      /:::/    /       /::::::\\    \\      ",
+    "     /:::/    /       /:::/\\:::\\    \\     ",
+    "    /:::/    /       /:::/__\\:::\\    \\    ",
+    "   /:::/    /       /::::\\   \\:::\\    \\   ",
+    "  /:::/    /       /::::::\\   \\:::\\    \\  ",
+    " /:::/    /       /:::/\\:::\\   \\:::\\    \\ ",
+    "/:::/____/       /:::/  \\:::\\   \\:::\\____\\",
+    "\\:::\\    \\       \\::/    \\:::\\  /:::/    /",
+    " \\:::\\    \\       \\/____/ \\:::\\/:::/    / ",
+    "  \\:::\\    \\               \\::::::/    /  ",
+    "   \\:::\\    \\               \\::::/    /   ",
+    "    \\:::\\    \\              /:::/    /    ",
+    "     \\:::\\    \\            /:::/    /     ",
+    "      \\:::\\    \\          /:::/    /      ",
+    "       \\:::\\____\\        /:::/    /       ",
+    "        \\::/    /        \\::/    /        ",
+    "         \\/____/          \\/____/         ",
+    "                                          ",
+  },
+}
+-- M.ui = {
+--       tabufline = {
+--          lazyload = false
+--      }
+-- }
 
 M.colorify = {
   enabled = true,
@@ -33,5 +72,4 @@ M.colorify = {
   virt_text = "󱓻 ",
   highlight = { hex = true, lspvars = true },
 }
-
 return M

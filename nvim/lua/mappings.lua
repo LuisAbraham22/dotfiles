@@ -2,39 +2,14 @@ require "nvchad.mappings"
 
 -- add yours here
 
--- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
---
-vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+local map = vim.keymap.set
+
+map("n", ";", ":", { desc = "CMD enter command mode" })
+map("i", "jk", "<ESC>")
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
-local map = vim.keymap.set
--- Comment
-map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
-map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
-
--- nvimtree
-map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
-map("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", { desc = "nvimtree focus window" })
-map("n", "<leader>n", "<cmd>set nu!<CR>", { desc = "toggle line number" })
-map("n", "<leader>rn", "<cmd>set rnu!<CR>", { desc = "toggle relative number" })
-vim.keymap.set("n", "<S-j>", "5j", { desc = "Quick move down" })
-vim.keymap.set("n", "<S-k>", "5k", { desc = "Quick move up" })
-
---nvim spider
-vim.keymap.set({ "n", "o", "x" }, "w", "<cmd>lua require('spider').motion('w')<CR>", { desc = "Spider-w" })
-vim.keymap.set({ "n", "o", "x" }, "e", "<cmd>lua require('spider').motion('e')<CR>", { desc = "Spider-e" })
-vim.keymap.set({ "n", "o", "x" }, "b", "<cmd>lua require('spider').motion('b')<CR>", { desc = "Spider-b" })
-
-vim.api.nvim_create_user_command("ReplaceWord", function()
-  local word = vim.fn.expand "<cword>"
-  vim.fn.feedkeys(":%s/\\<" .. word .. "\\>/")
-end, {})
-
-vim.keymap.set("n", "<leader>sr", ":ReplaceWord<CR>", { noremap = true, silent = true })
-vim.keymap.set("c", "<C-r><C-w>", "<C-r><C-w>", { noremap = true })
-vim.keymap.set("c", "<C-r>w", "<C-r><C-w>", { noremap = true })
 -- Neotest
 vim.keymap.set("n", "<Leader>tr", function()
   require("neotest").run.run()

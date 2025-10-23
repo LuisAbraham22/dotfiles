@@ -1,58 +1,47 @@
--- load defaults i.e lua_lsp
 require("nvchad.configs.lspconfig").defaults()
 
 local on_attach = require("nvchad.configs.lspconfig").on_attach
 local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
-local lspconfig = require "lspconfig"
-
-local servers = {
-  "lua_ls",
-  "html",
-  "cssls",
-  "pyright",
-  "ts_ls",
-  "smithy_ls",
-  "jsonls",
-  "gopls",
-  "gradle_ls",
-  "dockerls",
-  "eslint",
-  "sourcekit",
-  "jdtls",
-  "tailwindcss",
-}
+require "lspconfig"
 
 local on_attach_override = function(client, bufnr)
   on_attach(client, bufnr)
 end
 
--- Function to setup each LSP server
-local function setup_server(server)
-  -- Attempt to load a server-specific configuration file
-  local status, server_config = pcall(require, "configs." .. server)
+local servers = {
+  lua_ls = {},
+  html = {},
+  cssls = {},
+  pyright = {},
+  ts_ls = {},
+  jsonls = {},
+  gopls = {},
+  dockerls = {},
+  eslint = {},
+  sourcekit = {},
+  tailwindcss = {},
+}
 
-  if status and server_config then
-    -- Merge common configurations with server-specific settings
-    lspconfig[server].setup(vim.tbl_deep_extend("force", {
-      on_attach = on_attach_override,
-      on_init = on_init,
-      capabilities = capabilities,
-    }, server_config))
-  else
-    -- Setup server with default configurations if no specific config is found
-    lspconfig[server].setup {
-      on_attach = on_attach_override,
-      on_init = on_init,
-      capabilities = capabilities,
-    }
+local function resolve_config(name, opts)
+  local config = vim.tbl_deep_extend("force", {}, {
+    on_attach = on_attach_override,
+    on_init = on_init,
+    capabilities = capabilities,
+  }, opts or {})
+
+  local has_module, module_opts = pcall(require, "configs." .. name)
+  if has_module and module_opts then
+    config = vim.tbl_deep_extend("force", config, module_opts)
   end
+
+  return config
 end
 
--- Iterate through the servers list and setup each one
-for _, server in ipairs(servers) do
-  setup_server(server)
+for name, opts in pairs(servers) do
+  vim.lsp.config(name, resolve_config(name, opts))
+  vim.lsp.enable(name)
 end
 
 -- LSP commands

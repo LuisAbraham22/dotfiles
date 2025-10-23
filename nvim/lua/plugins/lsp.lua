@@ -1,3 +1,4 @@
+
 return {
   {
     "neovim/nvim-lspconfig",
@@ -8,19 +9,16 @@ return {
       require("mason-lspconfig").setup {
         -- Install these LSPs automatically
         ensure_installed = {
-          "jdtls",
           "pyright",
           "ts_ls",
-          "smithy_ls",
           "jsonls",
           "gopls",
-          "gradle_ls",
           "dockerls",
           "tailwindcss",
           "eslint",
           "lua_ls",
         },
-        automatic_installation = false,
+        automatic_installation = true,
       }
 
       require("mason-tool-installer").setup {
@@ -29,9 +27,6 @@ return {
           "stylua",
           "html-lsp",
           "css-lsp",
-          "java-debug-adapter",
-          "java-test",
-          "google-java-format",
           "biome",
           "goimports",
           "prettier",
